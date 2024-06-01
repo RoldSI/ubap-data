@@ -148,7 +148,7 @@ def submit_landmark():
             "longitude": longitude,
             "latitude": latitude
         },
-        "landmakr": {
+        "landmark": {
             "longitude": landmark_longitude,
             "latitude": landmark_latitude
         },
