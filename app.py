@@ -124,5 +124,42 @@ def submit_image():
     # Return a success response
     return jsonify({"message": "Text stored successfully", "id": str(result.inserted_id)}), 201
 
+@app.route('/submit/landmark', methods=['POST'])
+def submit_landmark():
+    # Get the JSON data from the request
+    data = request.get_json()
+    if not data or 'latitude' not in data or 'longitude' not in data or 'landmark_latitude' not in data or 'landmark_longitude' not in data or 'uxv_id' not in data or 'detected_object' not in data:
+        return jsonify({"error": "Not all fields provided"}), 400
+    
+    # Get the text from the JSON data
+    longitude = data['longitude']
+    latitude = data['latitude']
+    landmark_longitude = data['landmark_longitude']
+    landmark_latitude = data['landmark_latitude']
+    uxv_id = data['uxv_id']
+    detected_object = data['detected_object']
+    
+    # Create the document
+    document = {
+        "type": "uxv",
+        "uxv_id": uxv_id,
+        "timestamp": datetime.now(pytz.utc),
+        "location": {
+            "longitude": longitude,
+            "latitude": latitude
+        },
+        "landmakr": {
+            "longitude": longitude,
+            "latitude": latitude
+        },
+        "detected_object": detected_object
+    }
+
+    # Insert the document into the collection
+    result = collection.insert_one(document)
+    
+    # Return a success response
+    return jsonify({"message": "Text stored successfully", "id": str(result.inserted_id)}), 201
+
 if __name__ == '__main__':
     app.run(debug=True)
