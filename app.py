@@ -128,14 +128,12 @@ def submit_image():
 def submit_landmark():
     # Get the JSON data from the request
     data = request.get_json()
-    if not data or 'latitude' not in data or 'longitude' not in data or 'landmark_latitude' not in data or 'landmark_longitude' not in data or 'uxv_id' not in data or 'detected_object' not in data:
+    if not data or 'latitude' not in data or 'longitude' not in data or 'uxv_id' not in data or 'detected_object' not in data:
         return jsonify({"error": "Not all fields provided"}), 400
     
     # Get the text from the JSON data
     longitude = data['longitude']
     latitude = data['latitude']
-    landmark_longitude = data['landmark_longitude']
-    landmark_latitude = data['landmark_latitude']
     uxv_id = data['uxv_id']
     detected_object = data['detected_object']
     
@@ -147,10 +145,6 @@ def submit_landmark():
         "location": {
             "longitude": longitude,
             "latitude": latitude
-        },
-        "landmark": {
-            "longitude": landmark_longitude,
-            "latitude": landmark_latitude
         },
         "detected_object": detected_object
     }
