@@ -37,11 +37,12 @@ steps:
 images:
   - >-
     $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
-secrets:
-  - secretEnv:
-      MONGO_AUTH: 'projects/$PROJECT_ID/secrets/MONGO_AUTH/versions/latest'
-  - secretEnv:
-      MONGO_URL: 'projects/$PROJECT_ID/secrets/MONGO_URL/versions/latest'
+availableSecrets:
+  secretManager:
+  - versionName: projects/$PROJECT_ID/secrets/MONGO_AUTH/versions/latests
+    env: 'MONGO_AUTH'
+  - versionName: projects/PROJECT_ID/secrets/MONGO_URL/versions/latest
+    env: 'MONGO_URL'
 options:
   substitutionOption: ALLOW_LOOSE
   logging: CLOUD_LOGGING_ONLY
