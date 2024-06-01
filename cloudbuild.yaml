@@ -9,6 +9,7 @@ steps:
       - .
       - '-f'
       - Dockerfile
+    secretEnv: ['MONGO_URI']
     id: Build
   - name: gcr.io/cloud-builders/docker
     args:
