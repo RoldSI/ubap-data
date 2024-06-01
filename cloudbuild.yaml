@@ -29,8 +29,8 @@ steps:
       - >-
         --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID
       - '--region=$_DEPLOY_REGION'
-      # - '--set-secrets=MONGO_AUTH=MONGO_AUTH:latest'
-      # - '--set-secrets=MONGO_URL=MONGO_URL:latest'
+      - '--set-secrets=MONGO_AUTH=MONGO_AUTH:latest'
+      - '--set-secrets=MONGO_URL=MONGO_URL:latest'
       - '--quiet'
     id: Deploy
     entrypoint: gcloud
