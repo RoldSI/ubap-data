@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 from datetime import datetime
 import os
+import pytz
 
 load_dotenv()
 
@@ -42,7 +43,7 @@ def submit_report():
     document = {
         "type": "report",
         "source": source,
-        "timestamp": datetime.now(),
+        "timestamp": datetime.now(pytz.utc),
         "location": {
             "longitude": longitude,
             "latitude": latitude,
@@ -74,7 +75,7 @@ def submit_uxv():
     document = {
         "type": "uxv",
         "uxv_id": uxv_id,
-        "timestamp": datetime.now(),
+        "timestamp": datetime.now(pytz.utc),
         "location": {
             "longitude": longitude,
             "latitude": latitude
@@ -109,7 +110,7 @@ def submit_image():
     document = {
         "type": "image",
         "uxv_id": uxv_id,
-        "timestamp": datetime.now(),
+        "timestamp": datetime.now(pytz.utc),
         "location": {
             "longitude": longitude,
             "latitude": latitude
