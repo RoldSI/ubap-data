@@ -81,8 +81,8 @@ def submit_uxv():
             "latitude": latitude
         },
         "goal": {
-            "longitude": longitude,
-            "latitude": latitude
+            "longitude": goal_longitude,
+            "latitude": goal_latitude
         },
     }
 
@@ -149,8 +149,8 @@ def submit_landmark():
             "latitude": latitude
         },
         "landmakr": {
-            "longitude": longitude,
-            "latitude": latitude
+            "longitude": landmark_longitude,
+            "latitude": landmark_latitude
         },
         "detected_object": detected_object
     }
