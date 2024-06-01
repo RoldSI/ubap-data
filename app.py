@@ -8,9 +8,9 @@ load_dotenv()
 app = Flask(__name__)
 
 # MongoDB Atlas connection string
-# Replace <username>, <password>, and <cluster-url> with your actual values
-MONGO_URI = os.getenv('MONGO_URI')
-client = MongoClient(MONGO_URI)
+MONGO_URL = os.getenv('MONGO_URL')
+MONGO_AUTH = os.getenv('MONGO_AUTH')
+client = MongoClient(f"mongodb+srv://{MONGO_AUTH}@{MONGO_URL}/?retryWrites=true&w=majority&appName=ubap")
 client.admin.command('ping')
 print("Pinged your deployment. You successfully connected to MongoDB!")
 
