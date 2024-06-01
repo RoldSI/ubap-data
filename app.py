@@ -141,7 +141,7 @@ def submit_landmark():
     
     # Create the document
     document = {
-        "type": "uxv",
+        "type": "landmark",
         "uxv_id": uxv_id,
         "timestamp": datetime.now(pytz.utc),
         "location": {
